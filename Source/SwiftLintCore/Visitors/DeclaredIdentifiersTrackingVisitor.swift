@@ -68,9 +68,9 @@ open class DeclaredIdentifiersTrackingVisitor: ViolationsSyntaxVisitor {
 
     private func collectIdentifiers(from closureParameters: ClosureSignatureSyntax.Input) {
         switch closureParameters {
-        case let .input(parameters):
+        case .input(let parameters):
             parameters.parameterList.forEach({ parameter in scope.addToCurrentScope((parameter.secondName ?? parameter.firstName).text) })
-        case let .simpleInput(parameters):
+        case .simpleInput(let parameters):
             parameters.forEach({ parameter in  scope.addToCurrentScope(parameter.name.text) })
         }
     }
